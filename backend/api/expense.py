@@ -1,5 +1,6 @@
 from uuid import UUID
 from fastapi import APIRouter
+from models.expense import Expense
 
 app = APIRouter(prefix="/expenses")
 
@@ -8,11 +9,13 @@ def root():
     pass
 
 @app.post("", tags=["Expense"],status_code=201)
-def new_expense():
+def new_expense(
+    expense:Expense
+):
     '''
         This is the post api call for the expense
     '''
-    return "Post expense call"
+    return expense
 
 @app.get("/expenses", tags=["Expense"])
 def get_expenses():
