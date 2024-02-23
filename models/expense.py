@@ -35,10 +35,10 @@ class Expense(SQLModel, table=True):
         sa_column=Column("description", type_=String(250), nullable=True)
     )
     created_date: date = Field(
-        sa_column=Column("date", type_=DateTime(), nullable=False, server_default=func.now())
+        sa_column=Column("created_date", type_=DateTime(), nullable=False, server_default=func.now())
     )
     user_id:uuid.UUID = Field(
-        sa_column=Column("user", ForeignKey("user.id", ondelete="CASCADE"), nullable=False)
+        sa_column=Column("user_id", ForeignKey("user.id", ondelete="CASCADE"), nullable=False)
     )
 
     class Config:
